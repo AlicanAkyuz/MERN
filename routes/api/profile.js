@@ -33,11 +33,30 @@ router.get(
         }
         res.json(profile);
       })
-      .catch(err => {
-        res.status(404).json(err);
-      });
+      .catch(err =>
+        res.status(404).json({ user: "There is not a user with this id" })
+      );
   }
 );
+
+// @route:  GET for api/profile/all
+// @desc:   get all profiles
+// @access: public
+router.get("/all", (req, res) => {
+  const errors = {};
+  Profile.find()
+    .populate("user", ["name", "avatar"])
+    .then(profiles => {
+      if (!profiles) {
+        errors.noprofile = "There is not any profile";
+        return res.status(404).json(errors);
+      }
+      res.json(profiles);
+    })
+    .catch(err =>
+      res.status(404).json({ profile: "There is not any profile" })
+    );
+});
 
 // @route:  GET for api/profile/handle/:handle
 // @desc:   get profile by handle
@@ -54,6 +73,25 @@ router.get("/handle/:handle", (req, res) => {
       res.json(profile);
     })
     .catch(err => res.status(404).json(err));
+});
+
+// @route:  GET for api/profile/user/:user_id
+// @desc:   get profile by user id
+// @access: public
+router.get("/user/:user_id", (req, res) => {
+  const errors = {};
+  Profile.findOne({ user: req.params.user_id })
+    .populate("user", ["name", "avatar"])
+    .then(profile => {
+      if (!profile) {
+        errors.noprofile = "There is no profile for this user";
+        res.status(404).json(errors);
+      }
+      res.json(profile);
+    })
+    .catch(err =>
+      res.status(404).json({ profile: "There is no profile for this user" })
+    );
 });
 
 // @route:  POST api/profile
