@@ -40,4 +40,25 @@ router.post(
   }
 );
 
+// @route:  GET for api/posts
+// @desc:   get all posts
+// @access: public
+router.get("/", (req, res) => {
+  Post.find()
+    .sort({ date: -1 })
+    .then(posts => res.json(posts))
+    .catch(err => res.status(404).json({ nopostsfound: "No posts found" }));
+});
+
+// @route:  GET for api/posts/:id
+// @desc:   get single post by id
+// @access: public
+router.get("/:id", (req, res) => {
+  Post.findById(req.params.id)
+    .then(post => res.json(post))
+    .catch(err =>
+      res.status(404).json({ nopostfound: "No post found with that id" })
+    );
+});
+
 module.exports = router;
