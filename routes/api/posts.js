@@ -5,6 +5,8 @@ const passport = require("passport");
 
 // Load post model of mongoose
 const Post = require("../../models/Post");
+// Load profile model of mongoose
+const Profile = require("../../models/Profile");
 
 // Load validation
 const validatePostInput = require("../../validation/post");
@@ -60,5 +62,32 @@ router.get("/:id", (req, res) => {
       res.status(404).json({ nopostfound: "No post found with that id" })
     );
 });
+
+// @route:  DELETE for api/posts/:id
+// @desc:   delete post by id
+// @access: private
+router.delete(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Profile.findOne({ user: req.user.id }).then(profile => {
+      Post.findById(req.params.id).then(post => {
+        // check for post owner
+        if (post.user.toString() !== req.user.id) {
+          return res
+            .status(401)
+            .json({ notauthorized: "User not authorized to delete this post" });
+        }
+        // delete post
+        post
+          .remove()
+          .then(() => res.json({ success: true }))
+          .catch(err =>
+            res.status(404).json({ nopostfound: "No post found with that id" })
+          );
+      });
+    });
+  }
+);
 
 module.exports = router;
