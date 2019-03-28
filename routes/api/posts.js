@@ -149,4 +149,25 @@ router.post(
   }
 );
 
+// @route:  POST for api/posts/comment/:id
+// @desc:   post a comment to a post
+// @access: private
+router.post(
+  "/comment/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Post.findById(req.params.id).then(post => {
+      const newComment = {
+        test: req.body.text,
+        name: req.body.name,
+        avatar: req.body.avatar,
+        user: req.user.id
+      };
+
+      // add new comment to comments array
+      post.comments.unshift(newComment);
+    });
+  }
+);
+
 module.exports = router;
