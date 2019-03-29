@@ -7,7 +7,7 @@ const keys = require("../../config/keys");
 const passport = require("passport");
 
 // Load input validation
-const validateInputRegister = require("../../validation/register");
+const validateRegisterInput = require("../../validation/register");
 const validateInputLogin = require("../../validation/login");
 
 // Load user model of mongoose
@@ -22,7 +22,7 @@ router.get("/test", (req, res) => res.json({ msg: "users work for now" }));
 // @desc:   register a user
 // @access: public
 router.post("/register", (req, res) => {
-  const { errors, isValid } = validateInputRegister(req.body);
+  const { errors, isValid } = validateRegisterInput(req.body);
 
   // Check validation
   if (!isValid) {
@@ -33,7 +33,7 @@ router.post("/register", (req, res) => {
     // check if email already exists
     if (user) {
       errors.email = "Email already exists";
-      return res.status(400).json({ errors });
+      return res.status(400).json(errors);
     } else {
       const avatar = gravatar.url(req.body.email, {
         s: "200",
