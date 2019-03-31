@@ -11,6 +11,7 @@ import Footer from "./components/layout/Footer";
 import Landing from "./components/layout/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import { logoutUser } from "./actions/authActions";
 
 import "./App.css";
 
@@ -24,6 +25,15 @@ if (localStorage.jwtToken) {
 
   // set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
+
+  // check for expired token
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    // logout the use
+    store.dispatch(logoutUser());
+
+    // clear the current profile
+  }
 }
 
 class App extends Component {
