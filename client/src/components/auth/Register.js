@@ -79,7 +79,7 @@ class Register extends Component {
                     value={this.state.email}
                     onChange={this.onChange}
                   />
-                  {errors.name && (
+                  {errors.email && (
                     <div className="invalid-feedback">{errors.email}</div>
                   )}
                   <small className="form-text text-muted">
@@ -98,7 +98,7 @@ class Register extends Component {
                     value={this.state.password}
                     onChange={this.onChange}
                   />
-                  {errors.name && (
+                  {errors.password && (
                     <div className="invalid-feedback">{errors.password}</div>
                   )}
                 </div>
@@ -113,7 +113,7 @@ class Register extends Component {
                     value={this.state.password2}
                     onChange={this.onChange}
                   />
-                  {errors.name && (
+                  {errors.password2 && (
                     <div className="invalid-feedback">{errors.password2}</div>
                   )}
                 </div>

@@ -8,7 +8,7 @@ const passport = require("passport");
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
-const validateInputLogin = require("../../validation/login");
+const validateLoginInput = require("../../validation/login");
 
 // Load user model of mongoose
 const User = require("../../models/User");
@@ -66,7 +66,7 @@ router.post("/register", (req, res) => {
 // @desc:   finds user by email in db, checks for pwd and returns Json token
 // @access: public
 router.post("/login", (req, res) => {
-  const { errors, isValid } = validateInputLogin(req.body);
+  const { errors, isValid } = validateLoginInput(req.body);
 
   // Check validation
   if (!isValid) {
