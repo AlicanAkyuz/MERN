@@ -33,6 +33,8 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser());
 
     // clear the current profile
+    // redirect to login page
+    window.location.href = "/login";
   }
 }
 
