@@ -8,9 +8,37 @@ class Dashboard extends Component {
     this.props.getCurrentProfile();
   }
   render() {
-    return <div>Hey</div>;
+    const { user } = this.props.auth;
+    const { profile, loading } = this.props.profile;
+
+    let dashboardContent;
+
+    if (profile === null || loading) {
+      dashboardContent = <h4>Loading...</h4>;
+    } else {
+      dashboardContent = <h1>Hello welcome</h1>;
+    }
+
+    return (
+      <div className="dashboard">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12">
+              <h1 className="display-4">Dashboard</h1>
+              {dashboardContent}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }
+
+Dashboard.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired
+};
 
 const mapStateTpProps = state => ({
   profile: state.profile,
