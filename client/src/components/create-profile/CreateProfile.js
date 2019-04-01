@@ -13,7 +13,7 @@ class CreateProfile extends Component {
     this.state = {
       displaySocialInput: false,
       handle: "",
-      compnay: "",
+      company: "",
       website: "",
       location: "",
       status: "",
@@ -42,7 +42,56 @@ class CreateProfile extends Component {
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, displaySocialInput } = this.state;
+
+    let socialInputs;
+
+    if (displaySocialInput) {
+      socialInputs = (
+        <div>
+          <InputGroup
+            placeholder="Twitter Profile URL"
+            name="twitter"
+            icon="fab fa-twitter"
+            value={this.state.twitter}
+            onChange={this.onChange}
+            error={errors.twitter}
+          />
+          <InputGroup
+            placeholder="Facebook Profile URL"
+            name="facebook"
+            icon="fab fa-facebook"
+            value={this.state.facebook}
+            onChange={this.onChange}
+            error={errors.facebook}
+          />
+          <InputGroup
+            placeholder="LinkedIn Profile URL"
+            name="linkedin"
+            icon="fab fa-linkedin"
+            value={this.state.linkedin}
+            onChange={this.onChange}
+            error={errors.linkedin}
+          />
+          <InputGroup
+            placeholder="Youtube Profile URL"
+            name="youtube"
+            icon="fab fa-youtube"
+            value={this.state.youtube}
+            onChange={this.onChange}
+            error={errors.youtube}
+          />
+          <InputGroup
+            placeholder="Instagram Profile URL"
+            name="instagram"
+            icon="fab fa-instagram"
+            value={this.state.instagram}
+            onChange={this.onChange}
+            error={errors.instagram}
+          />
+        </div>
+      );
+    }
 
     // select options for user status
     const options = [
@@ -137,7 +186,7 @@ class CreateProfile extends Component {
                   <button
                     onClick={() => {
                       this.setState(prevState => ({
-                        displaySocialInputs: !prevState.displaySocialInputs
+                        displaySocialInput: !prevState.displaySocialInput
                       }));
                     }}
                     className="btn btn-light"
@@ -146,6 +195,12 @@ class CreateProfile extends Component {
                   </button>
                   <span className="text-muted"> Optional</span>
                 </div>
+                {socialInputs}
+                <input
+                  type="submit"
+                  value="submit"
+                  className="btn btn-info btn-block mt-4"
+                />
               </form>
             </div>
           </div>
