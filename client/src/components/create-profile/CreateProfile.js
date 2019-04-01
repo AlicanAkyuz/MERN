@@ -191,7 +191,7 @@ class CreateProfile extends Component {
                   value={this.state.skills}
                   onChange={this.onChange}
                   error={errors.skills}
-                  info="Please use coma seperated values, i.e HTML,CSS,Javascript"
+                  info="* Please use coma seperated values, i.e HTML,CSS,Javascript"
                 />
                 <TextfieldGroup
                   placeholder="Github User Name"
@@ -211,6 +211,7 @@ class CreateProfile extends Component {
                 />
                 <div className="mb-3">
                   <button
+                    type="button"
                     onClick={() => {
                       this.setState(prevState => ({
                         displaySocialInput: !prevState.displaySocialInput
