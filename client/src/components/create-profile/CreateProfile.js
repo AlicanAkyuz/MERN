@@ -76,7 +76,76 @@ class CreateProfile extends Component {
                   error={errors.handle}
                   info="A unique handle for your profile URL."
                 />
-                <SelectListGroup />
+                <SelectListGroup
+                  placeholder="Status"
+                  name="status"
+                  value={this.state.status}
+                  onChange={this.onChange}
+                  error={errors.status}
+                  options={options}
+                  info="Select Your Professional Status"
+                />
+                <TextfieldGroup
+                  placeholder="Company"
+                  name="company"
+                  value={this.state.company}
+                  onChange={this.onChange}
+                  error={errors.company}
+                  info="Your own company or one you work for"
+                />
+                <TextfieldGroup
+                  placeholder="Website"
+                  name="website"
+                  value={this.state.website}
+                  onChange={this.onChange}
+                  error={errors.website}
+                  info="Your personal website or portfolio"
+                />
+                <TextfieldGroup
+                  placeholder="Location"
+                  name="location"
+                  value={this.state.location}
+                  onChange={this.onChange}
+                  error={errors.location}
+                  info="Where are you?"
+                />
+                <TextfieldGroup
+                  placeholder="Skills"
+                  name="skills"
+                  value={this.state.skills}
+                  onChange={this.onChange}
+                  error={errors.skills}
+                  info="Please use coma seperated values, i.e HTML,CSS,Javascript"
+                />
+                <TextfieldGroup
+                  placeholder="Github User Name"
+                  name="githubusername"
+                  value={this.state.githubusername}
+                  onChange={this.onChange}
+                  error={errors.githubusername}
+                  info="To show your latest repos on your profile, please include your Github username"
+                />
+                <TextareaFieldGroup
+                  placeholder="Bio"
+                  name="bio"
+                  value={this.state.bio}
+                  onChange={this.onChange}
+                  error={errors.bio}
+                  info="Tell people about yourself"
+                />
+                <div className="mb-3">
+                  <button
+                    onClick={() => {
+                      this.setState(prevState => ({
+                        displaySocialInputs: !prevState.displaySocialInputs
+                      }));
+                    }}
+                    className="btn btn-light"
+                  >
+                    Add Social Networks
+                  </button>
+                  <span className="text-muted"> Optional</span>
+                </div>
               </form>
             </div>
           </div>
