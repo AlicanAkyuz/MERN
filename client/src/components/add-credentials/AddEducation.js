@@ -96,7 +96,7 @@ class AddEducation extends Component {
                   error={errors.degree}
                 />
                 <TextfieldGroup
-                  placeholder="Field of Study"
+                  placeholder="* Field of Study"
                   name="fieldofstudy"
                   value={this.state.fieldofstudy}
                   onChange={this.onChange}
