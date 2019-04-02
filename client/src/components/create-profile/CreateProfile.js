@@ -243,12 +243,12 @@ CreateProfile.propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-const mapStateTpProps = state => ({
+const mapStateToProps = state => ({
   profile: state.profile,
   errors: state.errors
 });
 
 export default connect(
-  mapStateTpProps,
+  mapStateToProps,
   { createProfile }
 )(withRouter(CreateProfile));

@@ -90,12 +90,12 @@ Login.propTypes = {
   errors: PropTypes.object.isRequired
 };
 
-const mapStateTpProps = state => ({
+const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
 
 export default connect(
-  mapStateTpProps,
+  mapStateToProps,
   { loginUser }
 )(Login);

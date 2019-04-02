@@ -80,12 +80,12 @@ Dashboard.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-const mapStateTpProps = state => ({
+const mapStateToProps = state => ({
   profile: state.profile,
   auth: state.auth
 });
 
 export default connect(
-  mapStateTpProps,
+  mapStateToProps,
   { getCurrentProfile, deleteAccount }
 )(Dashboard);
