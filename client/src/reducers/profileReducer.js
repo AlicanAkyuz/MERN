@@ -1,6 +1,7 @@
 import {
   PROFILE_LOADING,
   GET_PROFILE,
+  GET_PROFILES,
   CLEAR_CURRENT_PROFILE
 } from "../actions/types";
 
@@ -27,6 +28,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         profile: null
+      };
+    case GET_PROFILES:
+      return {
+        ...state,
+        profiles: action.payload,
+        loading: false
       };
     default:
       return state;
