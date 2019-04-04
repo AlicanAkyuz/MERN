@@ -5,7 +5,7 @@ import isEmpty from "../../validation/is-empty";
 
 class ProfileItem extends Component {
   render() {
-    const profile = this.props;
+    const { profile } = this.props;
 
     return (
       <div className="card card-body bg-light mb-3">
@@ -27,7 +27,7 @@ class ProfileItem extends Component {
             </p>
             <p>
               {isEmpty(profile.location) ? null : (
-                <span>based in {profile.location}</span>
+                <span>Based in {profile.location}</span>
               )}
             </p>
             <Link to={`/profile/${profile.handle}`} className="btn btn-info">

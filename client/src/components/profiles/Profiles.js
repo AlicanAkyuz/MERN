@@ -18,7 +18,9 @@ class Profiles extends Component {
       profileItem = <Spinner />;
     } else {
       if (profiles.length > 0) {
-        profileItem = <h1>Profiles here:</h1>;
+        profileItem = profiles.map(pro => (
+          <ProfileItem key={pro._id} profile={pro} />
+        ));
       } else {
         profileItem = <h4>No profiles found...</h4>;
       }
@@ -29,13 +31,11 @@ class Profiles extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4 text-center">
-                Developer Profiles
-                <p className="lead text-center">
-                  Browse and Connect with Developers
-                </p>
-                {profileItem}
-              </h1>
+              <h1 className="display-4 text-center">Developer Profiles</h1>
+              <p className="lead text-center">
+                Browse and Connect with Developers
+              </p>
+              {profileItem}
             </div>
           </div>
         </div>
