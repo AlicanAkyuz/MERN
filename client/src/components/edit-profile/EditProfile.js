@@ -21,7 +21,6 @@ class EditProfile extends Component {
       location: "",
       status: "",
       skills: "",
-      githubusername: "",
       bio: "",
       twitter: "",
       facebook: "",
@@ -59,10 +58,6 @@ class EditProfile extends Component {
 
       profile.location = !isEmpty(profile.location) ? profile.location : "";
 
-      profile.githubusername = !isEmpty(profile.githubusername)
-        ? profile.githubusername
-        : "";
-
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
 
       profile.social = !isEmpty(profile.social) ? profile.social : {};
@@ -95,7 +90,6 @@ class EditProfile extends Component {
         location: profile.location,
         status: profile.status,
         skills: skillsStr,
-        githubusername: profile.githubusername,
         bio: profile.bio,
         twitter: profile.twitter,
         facebook: profile.facebook,
@@ -116,7 +110,6 @@ class EditProfile extends Component {
       location: this.state.location,
       status: this.state.status,
       skills: this.state.skills,
-      githubusername: this.state.githubusername,
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
@@ -256,14 +249,6 @@ class EditProfile extends Component {
                   onChange={this.onChange}
                   error={errors.skills}
                   info="* Please use coma seperated values, i.e HTML,CSS,Javascript"
-                />
-                <TextfieldGroup
-                  placeholder="Github User Name"
-                  name="githubusername"
-                  value={this.state.githubusername}
-                  onChange={this.onChange}
-                  error={errors.githubusername}
-                  info="To show your latest repos on your profile, please include your Github username"
                 />
                 <TextareaFieldGroup
                   placeholder="Bio"

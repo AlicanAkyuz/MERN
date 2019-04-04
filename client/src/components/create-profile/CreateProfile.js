@@ -20,7 +20,6 @@ class CreateProfile extends Component {
       location: "",
       status: "",
       skills: "",
-      githubusername: "",
       bio: "",
       twitter: "",
       facebook: "",
@@ -52,7 +51,6 @@ class CreateProfile extends Component {
       location: this.state.location,
       status: this.state.status,
       skills: this.state.skills,
-      githubusername: this.state.githubusername,
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
@@ -192,14 +190,6 @@ class CreateProfile extends Component {
                   onChange={this.onChange}
                   error={errors.skills}
                   info="* Please use coma seperated values, i.e HTML,CSS,Javascript"
-                />
-                <TextfieldGroup
-                  placeholder="Github User Name"
-                  name="githubusername"
-                  value={this.state.githubusername}
-                  onChange={this.onChange}
-                  error={errors.githubusername}
-                  info="To show your latest repos on your profile, please include your Github username"
                 />
                 <TextareaFieldGroup
                   placeholder="Bio"

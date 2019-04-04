@@ -19,6 +19,7 @@ import AddExperience from "./components/add-credentials/AddExperience";
 import AddEducation from "./components/add-credentials/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
+import NotFound from "./components/not-found/NotFound";
 
 import { logoutUser } from "./actions/authActions";
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -44,10 +45,6 @@ if (localStorage.jwtToken) {
 
     // clear the current profile
     store.dispatch(clearCurrentProfile());
-
-    // you gotta delete the user info from the local storage as well here!
-    // you gotta delete the user info from the local storage as well here!
-    // you gotta delete the user info from the local storage as well here!
 
     // redirect to login page
     window.location.href = "/login";
@@ -98,6 +95,7 @@ class App extends Component {
                   component={AddEducation}
                 />
               </Switch>
+              <Route exact path="/not-found" component={NotFound} />
             </div>
             <Footer />
           </div>
