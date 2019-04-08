@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
+import TextareaFieldGroup from "../common/TextareaFieldGroup";
 import { addComment } from "../../actions/postActions";
 
 class CommentForm extends Component {
@@ -54,7 +54,7 @@ class CommentForm extends Component {
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <TextAreaFieldGroup
+                <TextareaFieldGroup
                   placeholder="Reply to post"
                   name="text"
                   value={this.state.text}
